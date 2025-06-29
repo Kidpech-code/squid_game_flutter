@@ -51,34 +51,6 @@ class GameUI extends StatelessWidget {
     );
   }
 
-  Widget _buildLightIndicator(BuildContext context) {
-    return Positioned(
-      top: 250,
-      left:
-          MediaQuery.of(context).size.width / 2 -
-          GameConstants.lightIndicatorSize / 2,
-      child: Container(
-        width: GameConstants.lightIndicatorSize,
-        height: GameConstants.lightIndicatorSize,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: gameState.isGreenLight ? Colors.green : Colors.red,
-          border: Border.all(color: Colors.white, width: 3),
-        ),
-        child: Center(
-          child: Text(
-            gameState.isGreenLight ? 'GO' : 'STOP',
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 12,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   Widget _buildGameStats(BuildContext context) {
     if (!gameState.isGameStarted) {
       return const SizedBox.shrink();
