@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../constants/text_styles.dart';
 import '../../game/JRGame/constants/jr_game_constants.dart';
 
 class JRGameOverScreen extends StatelessWidget {
@@ -6,16 +7,12 @@ class JRGameOverScreen extends StatelessWidget {
   final bool isPlayerDead;
   final VoidCallback onPlayAgain;
 
-  const JRGameOverScreen({
-    super.key,
-    required this.isWinner,
-    required this.isPlayerDead,
-    required this.onPlayAgain,
-  });
+  const JRGameOverScreen({super.key, required this.isWinner, required this.isPlayerDead, required this.onPlayAgain});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(20),
       color: JRGameConstants.backgroundBlack.withValues(alpha: 0.8),
       child: Center(
         child: Column(
@@ -26,24 +23,12 @@ class JRGameOverScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 52,
                 fontWeight: FontWeight.w900,
-                color:
-                    isWinner
-                        ? JRGameConstants.winnerGreen
-                        : JRGameConstants.primaryRed,
+                color: isWinner ? JRGameConstants.winnerGreen : JRGameConstants.primaryRed,
                 fontFamily: 'Courier',
                 letterSpacing: 3.0,
                 shadows: [
-                  Shadow(
-                    offset: Offset(4, 4),
-                    blurRadius: 8,
-                    color: Colors.black,
-                  ),
-                  if (isWinner)
-                    Shadow(
-                      offset: Offset(-1, -1),
-                      blurRadius: 2,
-                      color: Colors.yellow,
-                    ),
+                  Shadow(offset: Offset(4, 4), blurRadius: 8, color: Colors.black),
+                  if (isWinner) Shadow(offset: Offset(-1, -1), blurRadius: 2, color: Colors.yellow),
                 ],
               ),
             ),
@@ -63,45 +48,31 @@ class JRGameOverScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: onPlayAgain,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: JRGameConstants.primaryBlue,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 15,
-                    ),
-                  ),
-                  child: const Text(
-                    'PLAY AGAIN',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w900,
-                      fontFamily: 'Courier',
-                      letterSpacing: 2.0,
-                      color: JRGameConstants.textWhite,
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: ElevatedButton(
+                      onPressed: onPlayAgain,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                      ),
+                      child: const Text('PLAY AGAIN', style: GameTextStyles.button),
                     ),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).popUntil((route) => route.isFirst);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: JRGameConstants.primaryOrange,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 15,
-                    ),
-                  ),
-                  child: const Text(
-                    'BACK TO MENU',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w900,
-                      fontFamily: 'Courier',
-                      letterSpacing: 2.0,
-                      color: JRGameConstants.textWhite,
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).popUntil((route) => route.isFirst);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                      ),
+                      child: const Text('BACK TO MENU', style: GameTextStyles.button),
                     ),
                   ),
                 ),

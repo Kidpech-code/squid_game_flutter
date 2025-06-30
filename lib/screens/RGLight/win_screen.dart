@@ -7,11 +7,7 @@ class WinScreen extends StatelessWidget {
   final VoidCallback onPlayAgain;
   final ConfettiController confettiController;
 
-  const WinScreen({
-    super.key,
-    required this.onPlayAgain,
-    required this.confettiController,
-  });
+  const WinScreen({super.key, required this.onPlayAgain, required this.confettiController});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +15,7 @@ class WinScreen extends StatelessWidget {
       children: [
         // Win overlay
         Container(
+          padding: const EdgeInsets.all(20),
           color: Colors.black.withValues(alpha: 0.8),
           child: Center(
             child: Column(
@@ -26,44 +23,37 @@ class WinScreen extends StatelessWidget {
               children: [
                 const Text('WINNER!', style: GameTextStyles.winner),
                 const SizedBox(height: 20),
-                const Text(
-                  'YOU SURVIVED RED LIGHT GREEN LIGHT!',
-                  style: GameTextStyles.subtitle,
-                ),
+                const Text('YOU SURVIVED RED LIGHT GREEN LIGHT!', style: GameTextStyles.subtitle),
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ElevatedButton(
-                      onPressed: onPlayAgain,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 25,
-                          vertical: 15,
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: ElevatedButton(
+                          onPressed: onPlayAgain,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green,
+                            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                          ),
+                          child: const Text('PLAY AGAIN', style: GameTextStyles.button),
                         ),
-                      ),
-                      child: const Text(
-                        'PLAY AGAIN',
-                        style: GameTextStyles.button,
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(
-                          context,
-                        ).popUntil((route) => route.isFirst);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 25,
-                          vertical: 15,
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).popUntil((route) => route.isFirst);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.orange,
+                            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                          ),
+                          child: const Text('BACK TO MENU', style: GameTextStyles.button),
                         ),
-                      ),
-                      child: const Text(
-                        'BACK TO MENU',
-                        style: GameTextStyles.button,
                       ),
                     ),
                   ],

@@ -8,10 +8,7 @@ class GameTextStyles {
     color: Colors.white,
     fontFamily: 'Courier',
     letterSpacing: 2.0,
-    shadows: [
-      Shadow(offset: Offset(3, 3), blurRadius: 6, color: Colors.black),
-      Shadow(offset: Offset(-1, -1), blurRadius: 2, color: Colors.red),
-    ],
+    shadows: [Shadow(offset: Offset(3, 3), blurRadius: 6, color: Colors.black), Shadow(offset: Offset(-1, -1), blurRadius: 2, color: Colors.red)],
   );
 
   // Instructions text
@@ -40,10 +37,7 @@ class GameTextStyles {
     color: Colors.green,
     fontFamily: 'Courier',
     letterSpacing: 3.0,
-    shadows: [
-      Shadow(offset: Offset(4, 4), blurRadius: 8, color: Colors.black),
-      Shadow(offset: Offset(-1, -1), blurRadius: 2, color: Colors.yellow),
-    ],
+    shadows: [Shadow(offset: Offset(4, 4), blurRadius: 8, color: Colors.black), Shadow(offset: Offset(-1, -1), blurRadius: 2, color: Colors.yellow)],
   );
 
   // Game UI styles
@@ -65,7 +59,7 @@ class GameTextStyles {
 
   // Button styles
   static const TextStyle button = TextStyle(
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: FontWeight.w900,
     fontFamily: 'Courier',
     letterSpacing: 2.0,
